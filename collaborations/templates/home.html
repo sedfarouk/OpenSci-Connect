@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<h2>Welcome to Our Open Science Community</h2>
+<p>
+  We are committed to open science and collaboration in research. Our platform
+  connects project creators with skilled contributors to advance scientific
+  knowledge.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+  <li>Find and join open science projects</li>
+  <li>Create and manage your research projects</li>
+  <li>Collaborate with experts from various fields</li>
+</ul>
+
+<h3>Get Started</h3>
+<p>
+  If you're a project creator looking for collaborators,
+  <a href="{% url 'create_project' %}">create a project</a> now.
+</p>
+<p>
+  If you want to contribute to open science projects,
+  <a href="{% url 'project_list' %}">browse projects</a> and find the ones that
+  interest you.
+</p>
+{% endblock %}
