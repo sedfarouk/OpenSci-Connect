@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>User Profile</h2>
+
+  <p>Username: {{ user_profile.user.username }}</p>
+  <p>Skills: {{ user_profile.skills }}</p>
+  <p>Interests: {{ user_profile.interests }}</p>
+  <p>Availability: {{ user_profile.availability }}</p>
+
+  <h3>Recommended Projects:</h3>
+  <ul>
+    {% for project in recommended_projects %}
+      <li><a href="{% url 'project_detail' project.id %}">{{ project.title }}</a></li>
+      <p>Description: {{ project.description }}</p>
+      <p>Required Skills: {{ project.required_skills }}</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
