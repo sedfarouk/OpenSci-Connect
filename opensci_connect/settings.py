@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "django_backend.urls"
+ROOT_URLCONF = "opensci_connect.urls"
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "django_backend.wsgi.application"
+WSGI_APPLICATION = "opensci_connect.wsgi.application"
 
 
 # Database
