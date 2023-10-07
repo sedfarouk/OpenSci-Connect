@@ -1,0 +1,6 @@
+1.use command:
+  pip install django
+2. use command:
+  pip install scikit-learn
+3. finally use:
+  python manage.py runserver
