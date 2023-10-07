@@ -2,6 +2,7 @@
 
 {% block content %}
   <h2>Message List</h2>
+  <a href={% url "create_message" request.user.id %}> Compose a message </a>
   <ul>
     {% for message in messages %}
       <li><a href="{% url 'message_detail' message.id %}">{{ message.subject }}</a></li>

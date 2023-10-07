@@ -9,11 +9,18 @@
     <header>
         <h1>OpenSci Connect</h1>
         <nav>
+            {% if user.is_authenticated %}
+            <h4>Welcome {{user.username}}</h4>
+            {% endif %}
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url 'project_list' %}">Projects</a></li>
                 <li><a href="{% url 'user_profile' %}">Profile</a></li>
                 <li><a href="{% url 'message_list' %}">Messages</a></li>
+
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Log out</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>

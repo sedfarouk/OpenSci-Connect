@@ -31,6 +31,10 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     is_read = models.BooleanField(default=False)
     
+    def __str__(self):
+        return f"From {self.sender} to {self.recipient} ({self.timestamp})"
+    
+    
 class UserProjectInteraction(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)

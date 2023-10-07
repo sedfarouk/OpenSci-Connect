@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import UserProfile, Project, Message, UserProjectInteraction
-from .forms import ProjectForm
+from .forms import ProjectForm, MessageForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
@@ -130,12 +130,18 @@ def create_message(request, recipient_id):
     sender = request.user
 
     if request.method == 'POST':
-        message_content = request.POST['message']
-        message = Message(sender=sender, recipient=recipient, content=message_content)
-        message.save()
-        messages.success(request, 'Message sent successfully.')
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = sender
+            message.recipient = recipient
+            message.save()
+            messages.success(request, 'Message sent successfully.')
+            return redirect('message_list')
+    else:
+        form = MessageForm()
 
-    return redirect('message_list')
+    return render(request, 'message_form.html', {'form': form})
 
 
 @login_required
