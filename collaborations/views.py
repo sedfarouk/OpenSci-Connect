@@ -35,7 +35,7 @@ def signup(request):
 def custom_login(request):
     response = auth_views.LoginView.as_view()(request)
     if request.user.is_authenticated:
-        return redirect('profile') 
+        return redirect('user_profile') 
     return response
 
 
