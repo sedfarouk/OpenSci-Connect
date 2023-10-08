@@ -13,6 +13,7 @@ from .forms import ProjectForm, MessageForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+#import requests
 
 
 # Create your views here.
@@ -30,39 +31,6 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
-
-
-def custom_login(request):
-    response = auth_views.LoginView.as_view()(request)
-    if request.user.is_authenticated:
-        return redirect('user_profile') 
-    return response
-
-
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('project_list')
-    
-    else:
-        form = UserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
-        
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        
-        if user is not None:
-            login(request, user)
-            return redirect('project_list')
-    return render(request, 'registration/login.html')
 
 
 def get_user_project_interactions():
