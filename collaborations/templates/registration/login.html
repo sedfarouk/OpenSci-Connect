@@ -36,7 +36,7 @@
             <div class="input-box">
               {{ form.username }}
               <!-- Assuming 'username' is the name of the field in the form -->
-              <label for="{{ form.username.id_for_label }}">Email</label>
+              <label for="{{ form.username.id_for_label }}">Username</label>
             </div>
             <div class="input-box">
               {{ form.password }}
@@ -46,11 +46,9 @@
             <input type="submit" class="btn" value="Login" />
           </form>
           <div class="group-section">
-            <a href="#">Forgot Password?</a>
-            <a href="{% url 'signup' %}">Create Account</a>
+            <p>Don't have an account? Sign up <a href="{% url 'signup' %}">here</a> </p>
+            <p><a href="{% url 'home' %}">Back to Home</a></p>
           </div>
-          <!-- "Back to Home" button -->
-          <a href="{% url 'home' %}" class="btn-back-home">Back to Home</a>
         </div>
       </div>
     </div>
