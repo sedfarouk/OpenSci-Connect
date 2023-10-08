@@ -13,7 +13,6 @@ from .forms import ProjectForm, MessageForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-# import requests
 
 
 # Create your views here.
@@ -53,6 +52,8 @@ def user_login(request):
             login(request, user)
             return redirect('project_list')
     return render(request, 'registration/login.html')
+
+
 
 
 def get_user_project_interactions():
