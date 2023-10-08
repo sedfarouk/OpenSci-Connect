@@ -1,10 +1,13 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="message-form-section">
+  <div class="form-container">
     <h2>Create a Message</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Send Message</button>
+    <form method="post" class="message-form">
+      {% csrf_token %} {{ form.as_p }}
+      <div class="form-actions">
+        <button type="submit" class="send-button">Send Message</button>
+      </div>
     </form>
+  </div>
+</section>
 {% endblock %}

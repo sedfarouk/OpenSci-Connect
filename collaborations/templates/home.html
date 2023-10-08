@@ -2,18 +2,18 @@
 <header>
   <div class="header-container">
     <div class="header-container-inner">
-      <h1>A healthy meal delivered to your door, every single day</h1>
+      <h1>Welcome to Our Open Science Community</h1>
       <p>
         We are committed to open science and collaboration in research. Our
         platform connects project creators with skilled contributors to advance
         scientific knowledge.
       </p>
-      <a href="#" class="btn">Start your journey! 🚀</a>
+      <a href="{% url 'user_profile' %}" class="btn">Start your journey! 🚀</a>
     </div>
   </div>
 </header>
 
-<section>
+<section class="section-features">
   <div class="container">
     <h3>Key Features</h3>
     <ul>
@@ -24,25 +24,66 @@
     <h3>Get Started</h3>
     <p>
       If you're a project creator looking for collaborators,
-      <a href="{% url 'create_project' %}">create a project</a> now.
-    </p>
-    <p>
-      If you want to contribute to open science projects,
+      <a href="{% url 'create_project' %}">create a project</a> now. If you want
+      to contribute to open science projects,
       <a href="{% url 'project_list' %}">browse projects</a> and find the ones
       that interest you.
     </p>
   </div>
 </section>
-
-<section>
+<section class="section-apod">
   <div class="container">
-    <h2>Some random heading</h2>
+    <h2>NASA's Astronomy Picture of the Day</h2>
+    <div class="apod-content">
+      <img
+        src="{{ nasa_apod.url }}"
+        alt="{{ nasa_apod.title }}"
+        class="apod-image"
+      />
+      <div class="apod-description">
+        <h3>{{ nasa_apod.title }}</h3>
+        <p>{{ nasa_apod.explanation }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="normal-section">
+  <div class="container">
+    <h2>NASA</h2>
     <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque, ratione
-      provident quo nisi velit ullam placeat minus tempora deleniti quasi
-      praesentium quaerat, quae commodi amet dolores nobis, sed perferendis
-      veritatis.
+      The National Aeronautics and Space Administration (NASA) is the United
+      States government agency responsible for U.S. space exploration, space
+      technology, Earth and space science, and aeronautics research. NASA
+      inspires the world by exploring new frontiers, discovering new knowledge,
+      and developing new technology.
     </p>
   </div>
 </section>
-{% endblock %}
+
+{% if epic_data %}
+<section class="epic-images-section">
+  <h2>EPIC Images</h2>
+  {% for entry in epic_data %} {% with date=entry.date|date:"Y/m/d" %} <img
+  src="https://api.nasa.gov/EPIC/archive/natural/{{ date|slice:":4" }}/{{
+  date|slice:"5:7" }}/{{ date|slice:"8:10" }}/png/{{ entry.image
+  }}.png?api_key=YOUR_API_KEY_HERE" alt="{{ entry.caption }}" />
+  <p>{{ entry.caption }}</p>
+  {% endwith %} {% endfor %}
+</section>
+{% endif %} {% if mars_photos %}
+<section class="mars-rover-photos-section">
+  <h2>Navigate Through the endless Mars Rover Photos!</h2>
+  <div class="mars-rover-grid">
+    {% for photo in mars_photos.photos %}
+    <div class="mars-rover-grid-item">
+      <img
+        src="{{ photo.img_src }}"
+        alt="Mars Rover Photo taken by {{ photo.camera.name }}"
+      />
+      <p>Taken by {{ photo.camera.name }} on sol {{ photo.sol }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %} {% endblock %}

@@ -40,3 +40,55 @@
 .welcome {
   margin-right: 20px;
 }
+/* Extra small devices */
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-items ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
+
+/* Small devices */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  /* Adjustments for landscape phones here */
+}
+
+/* Medium devices */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Adjustments for tablets here */
+}
+
+/* Large devices */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Adjustments for desktops here */
+}
+
+/* Extra large devices */
+@media (min-width: 1200px) {
+  /* Adjustments for large desktops here */
+}
+/* Extra small devices (phones) */
+@media (max-width: 575.98px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .nav-items ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .nav-items ul li {
+    margin-bottom: 10px;
+  }
+
+  .nav-items ul li a {
+    font-size: 0.9rem;
+  }
+}

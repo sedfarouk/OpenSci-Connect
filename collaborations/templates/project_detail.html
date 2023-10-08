@@ -1,9 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %} {% block content %}
+<section class="project-detail-section">
+  <div class="project-container">
+    <div class="nav-buttons">
+      <a href="#" onclick="window.history.back();" class="back-button"
+        >← Back</a
+      >
+    </div>
 
-{% block content %}
-  <h2>Project Detail</h2>
-  <p>Title: {{ project.title }}</p>
-  <p>Creator: {{ project.creator }}</p>
-  <p>Description: {{ project.description }}</p>
-  <p>Required Skills: {{ project.required_skills }}</p>
+    <div class="project-header">
+      <h2>Project Detail: {{ project.title }}</h2>
+    </div>
+
+    <div class="project-info">
+      <div class="info-label">Creator:</div>
+      <div class="info-content">{{ project.creator }}</div>
+    </div>
+
+    <div class="project-info">
+      <div class="info-label">Description:</div>
+      <div class="info-content">{{ project.description }}</div>
+    </div>
+
+    <div class="project-info">
+      <div class="info-label">Required Skills:</div>
+      <div class="info-content">{{ project.required_skills }}</div>
+    </div>
+  </div>
+</section>
 {% endblock %}

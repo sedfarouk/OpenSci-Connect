@@ -13,13 +13,61 @@ from .forms import ProjectForm, MessageForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import requests # <-- for fetching API's of NASA
+
+
+#fetch APOD API (Nasa daily pictures)
+
+def fetch_apod():
+    url = "https://api.nasa.gov/planetary/apod?api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        nasa_apod = NasaAPOD(data['title'], data['url'], data['explanation'])
+        return nasa_apod
+    else:
+        return None
+
+#fetch MArs ROVER API 
+def fetch_mars_rover_photos():
+    url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        mars_photos = MarsRoverPhoto(data['photos'])
+        return mars_photos
+    else:
+        return None
+
+
+# Fetch rotation of the earth EPIC API
+def fetch_epic():
+    url = "https://api.nasa.gov/EPIC/api/natural/images?api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"  
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    else:
+        return None
+
 
 
 # Create your views here.
 def home(request):
-    #fetch dat from Nasa
+    #fetch data from Nasa
+    nasa_apod = fetch_apod()
     
-    return render(request, 'home.html') #format (requests, page_name.html, json_obj_passing)
+    # fetch data from Mars Rover Photos
+    mars_photos = fetch_mars_rover_photos()
+    epic_data = fetch_epic()
+    print("🚀🚀🚀🚀")
+    print(epic_data)
+    print("🚀🚀🚀🚀")
+
+    return render(request, 'home.html', {'nasa_apod': nasa_apod, 'mars_photos': mars_photos, 'epic_data': epic_data}) #format (requests, page_name.html, json_obj_passing)
 
 
 def signup(request):
@@ -159,3 +207,19 @@ class ProjectDetailView(DetailView):
     model = Project
     template_name = 'project_detail.html'
     context_object_name = 'project'
+
+
+#Since we want to make the data from APOD API as an object, we will create this class in order to send it as an object to the front end
+class NasaAPOD:
+    def __init__(self, title, url, explanation):
+        self.title = title
+        self.url = url
+        self.explanation = explanation
+ 
+#  We will do the same for the Mars Rover API
+class MarsRoverPhoto:
+    def __init__(self, photos):
+        self.photos = photos
+
+
+

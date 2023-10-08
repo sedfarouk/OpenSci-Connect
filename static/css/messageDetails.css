@@ -1,0 +1,73 @@
+body,
+html {
+  font-family: "Arial", sans-serif;
+}
+
+.nasa-message-detail-section {
+  background-color: #000;
+  color: #fff;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+}
+
+.nasa-message-container {
+  max-width: 800px;
+  width: 80%;
+  border-radius: 10px;
+  background-color: #1a1a1a; /* Darker shade for modern look */
+  padding: 20px 40px;
+  box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.4); /* Slight golden glow for NASA touch */
+  text-align: center;
+}
+
+.nasa-nav-buttons {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.nasa-back-button {
+  text-decoration: none;
+  color: #ffd700; /* Golden color for NASA */
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 20px;
+}
+
+.nasa-back-button:hover {
+  background-color: #ffd700;
+  color: #000;
+}
+
+.nasa-message-info,
+.nasa-message-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.nasa-info-label {
+  font-weight: bold;
+  color: #ffd700; /* Golden color for emphasis */
+  margin-bottom: 8px;
+}
+
+.nasa-info-content {
+  color: #fff;
+  text-align: center;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Clear floats if any */
+::after {
+  content: "";
+  display: table;
+  clear: both;
+}
