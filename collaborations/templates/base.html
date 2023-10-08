@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenSci-Connect</title>
     {% load static %}
-    <link
-      rel="icon"
-      href="/static/img/bryanmax9_Nasa_project_logo_stamp_9e39aa90-e8f7-4ad0-b11a-196651b10d35.png"
-    />
+    <link rel="icon" href="https://i.imgur.com/91mvIQV.jpeg" />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     <link href="{% static 'css/base.css' %}" rel="stylesheet" />
     <link href="{% static 'css/projectList.css' %}" rel="stylesheet" />
@@ -22,27 +19,15 @@
 
   <body>
     <nav class="navbar">
-      <a href="/" class="navbar-brand">OpenSci Connect</a>
-      <div class="menu-container">
-        {% if user.is_authenticated %}
-        <li style="list-style: none" class="welcome">
-          Welcome {{user.username}}
-        </li>
-        {% endif %}
-        <button class="menu-button" onclick="toggleMenu()">☰</button>
-        <div class="menu-content" id="menuContent">
-          <button class="close-button" onclick="toggleMenu()">×</button>
+      <div class="container">
+        <a href="/" class="navbar-brand">OpenSci Connect</a>
+        <div class="nav-items">
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="{% url 'project_list' %}">Projects</a></li>
             <li><a href="{% url 'epic_api' %}">EPIC</a></li>
-            <li>
-              <a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a>
-            </li>
-            <li>
-              <a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a>
-            </li>
-
+            <li><a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a></li>
+            
             {% if user.is_authenticated %}
             <li class="dropdown">
               <a href="javascript:void(0)" class="dropbtn">{{user.username}}</a>
@@ -57,6 +42,7 @@
             <li><a href="{% url 'login' %}">Login</a></li>
             <li><a href="{% url 'signup' %}">Signup</a></li>
             {% endif %}
+
           </ul>
         </div>
       </div>
@@ -67,25 +53,5 @@
     <footer>
       <p>&copy; {% now "Y" %} NASA Open Science</p>
     </footer>
-    <script>
-      function toggleMenu() {
-        const menuContent = document.getElementById("menuContent");
-        const menuButton = document.querySelector(".menu-button");
-        const closeButton = document.querySelector(".close-button");
-
-        if (
-          menuContent.style.display === "none" ||
-          menuContent.style.display === ""
-        ) {
-          menuContent.style.display = "flex";
-          menuButton.style.display = "none"; // Hide the menu button
-          closeButton.style.display = "block"; // Show the close button
-        } else {
-          menuContent.style.display = "none";
-          menuButton.style.display = "block"; // Show the menu button
-          closeButton.style.display = "none"; // Hide the close button
-        }
-      }
-    </script>
   </body>
 </html>
