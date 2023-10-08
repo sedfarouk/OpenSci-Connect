@@ -19,7 +19,7 @@ import requests # <-- for fetching API's of NASA
 #fetch APOD API (Nasa daily pictures)
 
 def fetch_apod():
-    url = "https://api.nasa.gov/planetary/apod?api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"
+    url = "https://api.nasa.gov/planetary/apod?api_key=udQGHa9nzmkN8dFksMchqYorWULyTAXpFkmv04iY"
     response = requests.get(url)
     
     if response.status_code == 200:
@@ -56,7 +56,8 @@ def fetch_epic(request):
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    data = fetch_apod()
+    return render(request, 'home.html', {'data':data})
 
 
 def signup(request):
