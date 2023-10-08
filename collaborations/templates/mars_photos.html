@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+{% if mars_photos %}
+<section class="mars-rover-photos-section">
+    <h2>Navigate Through Photos taken by Mars Rovers!</h2>
+    <div class="mars-rover-grid">
+      {% for photo in mars_photos.photos %}
+      <div class="mars-rover-grid-item">
+        <img
+          src="{{ photo.img_src }}"
+          alt="Mars Rover Photo taken by {{ photo.camera.name }}"
+        />
+        <p>Taken by {{ photo.camera.name }} on sol {{ photo.sol }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+{% endblock content %}

@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenSci-Connect</title>
-</head>
-<body>
-    <header>
-        <h1>OpenSci Connect</h1>
-        <nav>
+    {% load static %}
+    <link rel="icon" href="https://i.imgur.com/91mvIQV.jpeg" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/projectList.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/projectDetails.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/userProfile.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/messageList.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/messageForm.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/messageDetails.css' %}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a href="/" class="navbar-brand">OpenSci Connect</a>
+        <div class="nav-items">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url 'project_list' %}">Projects</a></li>
+            <li><a href="{% url 'user_profile' %}">Profile</a></li>
+            <li><a href="{% url 'message_list' %}">Messages</a></li>
+            <li><a href="{% url 'epic_api' %}">EPIC</a></li>
+            <li><a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a></li>
+
             {% if user.is_authenticated %}
-            <h4>Welcome {{user.username}}</h4>
+            <li class="welcome">Welcome {{user.username}}</li>
+            <li><a href="{% url 'logout' %}">Log out</a></li>
             {% endif %}
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="{% url 'project_list' %}">Projects</a></li>
-                <li><a href="{% url 'user_profile' %}">Profile</a></li>
-                <li><a href="{% url 'message_list' %}">Messages</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-                {% if user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Log out</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+    <main>{% block content %} {% endblock %}</main>
 
     <footer>
-        <p>&copy; {% now "Y" %} NASA Open Science</p>
+      <p>&copy; {% now "Y" %} NASA Open Science</p>
     </footer>
-</body>
+  </body>
 </html>

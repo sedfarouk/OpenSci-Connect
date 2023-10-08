@@ -1,10 +1,51 @@
-{% extends 'base.html' %}
-
 {% block content %}
-  <h2>Sign Up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup form</title>
+    {% load static %}
+    <link rel="icon" href="https://i.imgur.com/91mvIQV.jpeg" />
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="video">
+        <video class="bg-video__content" autoplay muted loop>
+          <source
+            src="https://drive.google.com/uc?export=download&id=1zsGGIgyeaVYTvoClyp0XZnH2Gx-U_jeq"
+            type="video/mp4"
+          />
+          <source
+            src="https://drive.google.com/uc?export=download&id=1hlLkalc4_LWoxuYMceNZqIGdSrUBPLwR"
+            type="video/webm"
+          />
+          Your browser is not supported for this videos!sorry😥
+        </video>
+      </div>
+      <div class="signup-section">
+        <div class="form-box">
+          <h2>Sign Up</h2>
+          <form method="post">
+            {% csrf_token %}
+            <!-- Displaying form fields -->
+            {% for field in form %}
+            <div class="input-box">
+              {{ field }}
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            </div>
+            {% endfor %}
+            <input type="submit" class="btn" value="Sign Up" />
+          </form>
+          <!-- Link back to Login page -->
+          <div class="group-section">
+            <a href="{% url 'login' %}">Already have an account? Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 {% endblock %}
