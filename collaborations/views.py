@@ -57,17 +57,7 @@ def fetch_epic():
 
 # Create your views here.
 def home(request):
-    #fetch data from Nasa
-    nasa_apod = fetch_apod()
-    
-    # fetch data from Mars Rover Photos
-    mars_photos = fetch_mars_rover_photos()
-    epic_data = fetch_epic()
-    print("🚀🚀🚀🚀")
-    print(epic_data)
-    print("🚀🚀🚀🚀")
-
-    return render(request, 'home.html', {'nasa_apod': nasa_apod, 'mars_photos': mars_photos, 'epic_data': epic_data}) #format (requests, page_name.html, json_obj_passing)
+    return render(request, 'home.html')
 
 
 def signup(request):
@@ -89,7 +79,6 @@ def custom_login(request):
     return response
 
 
-
 def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -100,8 +89,6 @@ def user_login(request):
             login(request, user)
             return redirect('project_list')
     return render(request, 'registration/login.html')
-
-
 
 
 def get_user_project_interactions():
