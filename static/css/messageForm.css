@@ -1,0 +1,64 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.message-form-section {
+  padding: 2rem 5vw;
+  background-color: #000;
+  color: #fff;
+  min-height: 90vh; /* Ensures that the section occupies most of the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  max-width: 800px;
+  width: 100%;
+  border: 1px solid #333;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #202020;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.message-form p {
+  margin-bottom: 1rem;
+}
+
+.message-form label,
+.message-form input,
+.message-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.message-form label,
+.message-form input:focus,
+.message-form textarea:focus {
+  border-color: #ffd700; /* Golden color for emphasis */
+}
+
+.send-button {
+  padding: 10px 20px;
+  background-color: #ffd700; /* Golden color for emphasis */
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-button:hover {
+  background-color: #ffb700;
+}

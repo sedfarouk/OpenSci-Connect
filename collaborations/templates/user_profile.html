@@ -1,20 +1,41 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %} {% block content %}
+<section class="user-profile-section">
+  <div class="user-header">
+    <img
+      src="/static/img/bryanmax9_real_life_cute_Nasa_cat_astronaut_8edae145-0d12-44a8-b0c3-0d9788d62432.png"
+      alt="{{ user_profile.user.username }} Profile Picture"
+      class="user-profile-image"
+    />
+  </div>
 
-{% block content %}
-  <h2>User Profile</h2>
+  <div class="user-info">
+    <h2>{{ user_profile.user.username }}</h2>
+    <p><span class="info-title">Skills:</span> {{ user_profile.skills }}</p>
+    <p>
+      <span class="info-title">Interests:</span> {{ user_profile.interests }}
+    </p>
+    <p>
+      <span class="info-title">Availability:</span> {{ user_profile.availability
+      }}
+    </p>
+  </div>
 
-  <p>Username: {{ user_profile.user.username }}</p>
-  <p>Skills: {{ user_profile.skills }}</p>
-  <p>Interests: {{ user_profile.interests }}</p>
-  <p>Availability: {{ user_profile.availability }}</p>
-
-  <h3>Recommended Projects:</h3>
-  <ul>
-    {% for project in recommended_projects %}
-      <li><a href="{% url 'project_detail' project.id %}">{{ project.title }}</a></li>
-      <p>Description: {{ project.description }}</p>
-      <p>Required Skills: {{ project.required_skills }}</p>
-    {% endfor %}
-  </ul>
+  <div class="recommended-projects">
+    <h3>Recommended Projects:</h3>
+    <ul>
+      {% for project in recommended_projects %}
+      <li>
+        <a href="{% url 'project_detail' project.id %}">{{ project.title }}</a>
+        <p>
+          <span class="info-title">Description:</span> {{ project.description }}
+        </p>
+        <p>
+          <span class="info-title">Required Skills:</span> {{
+          project.required_skills }}
+        </p>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
 {% endblock %}
-

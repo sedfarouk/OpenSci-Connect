@@ -1,0 +1,72 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.message-section {
+  padding: 2rem 5vw;
+  background-color: #000;
+  color: #fff;
+  min-height: 90vh; /* Ensures that the section occupies most of the viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.compose-button {
+  background-color: #ffd700; /* Golden color for emphasis */
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.compose-button:hover {
+  background-color: #ffb700;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column; /* Ensures the messages are listed in a column */
+  gap: 2rem;
+  align-items: center; /* Centers the messages */
+  max-width: 800px; /* Sets a maximum width for readability */
+  margin: 0 auto; /* Centers the container if it's narrower than the viewport */
+  flex-grow: 1; /* Allows the container to grow and occupy the available space */
+}
+
+.message-card {
+  width: 100%;
+  padding: 1rem;
+  background-color: #333;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+}
+
+.message-card:hover {
+  background-color: #444;
+  transform: scale(1.05);
+}
+
+.message-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.message-link h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffd700; /* Golden color for emphasis */
+}

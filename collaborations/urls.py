@@ -14,4 +14,6 @@ urlpatterns = [
     path('message_detail/<int:pk>/', MessageDetailView.as_view(), name='message_detail'),
     path('project_list/', ProjectListView.as_view(), name='project_list'),
     path('project_detail/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
+    path('epic_api/', fetch_epic, name="epic_api"),
+    path('mars_rover_api', fetch_mars_rover_photos, name="mars_rover_api")
 ]

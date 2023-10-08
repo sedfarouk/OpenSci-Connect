@@ -1,9 +1,28 @@
-{% extends "base.html" %}
-
-{% block content %}
-  <h2>Message Detail</h2>
-  <p>From: {{ message.sender }}</p>
-  <p>To: {{ message.recipient }}</p>
-  <p>Subject: {{ message.subject }}</p>
-  <p>Content: {{ message.content }}</p>
+{% extends "base.html" %} {% load static %} {% block content %}
+<section class="nasa-message-detail-section">
+  <div class="nasa-message-container">
+    <div class="nasa-nav-buttons">
+      <a href="#" onclick="window.history.back();" class="nasa-back-button"
+        >← Back</a
+      >
+    </div>
+    <h2 class="nasa-message-header">Message Detail</h2>
+    <div class="nasa-message-info">
+      <div class="nasa-info-label">From:</div>
+      <div class="nasa-info-content">{{ message.sender }}</div>
+    </div>
+    <div class="nasa-message-info">
+      <div class="nasa-info-label">To:</div>
+      <div class="nasa-info-content">{{ message.recipient }}</div>
+    </div>
+    <div class="nasa-message-info">
+      <div class="nasa-info-label">Subject:</div>
+      <div class="nasa-info-content">{{ message.subject }}</div>
+    </div>
+    <div class="nasa-message-body">
+      <div class="nasa-info-label">Content:</div>
+      <div class="nasa-info-content">{{ message.content }}</div>
+    </div>
+  </div>
+</section>
 {% endblock %}

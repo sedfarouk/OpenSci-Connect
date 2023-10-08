@@ -18,3 +18,20 @@ use command to create super user account:
 
 Go to the path "/admin"
 
+
+
+-------------------------------------------------------------------
+to push to you branch use this commands:
+
+git add . 
+git commit -m "writte something"
+git push origin "name of branch"
+
+(psdt: everytime you push, after that use "git checkout main" in order to get your files back)
+
+now to pull changes from a branch:
+
+git pull origin branch_name
+e.g, git pull origin front-end
+
+

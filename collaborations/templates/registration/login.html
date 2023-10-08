@@ -1,11 +1,56 @@
-{% extends "base.html" %}
-
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-  <a href="{% url 'signup'%}">Sign up here</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login form</title>
+    {% load static %}
+    <link rel="icon" href="https://i.imgur.com/91mvIQV.jpeg" />
+    <link href="{% static 'css/login.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="video">
+        <video class="bg-video__content" autoplay muted loop>
+          <source
+            src="https://drive.google.com/uc?export=download&id=1zsGGIgyeaVYTvoClyp0XZnH2Gx-U_jeq"
+            type="video/mp4"
+          />
+          <source
+            src="https://drive.google.com/uc?export=download&id=1hlLkalc4_LWoxuYMceNZqIGdSrUBPLwR"
+            type="video/webm"
+          />
+          Your browser is not supported for this videos!sorry😥
+        </video>
+      </div>
+      <div class="login-section">
+        <div class="form-box">
+          <h2>Login</h2>
+          <form method="post">
+            {% csrf_token %}
+            <div class="input-box">
+              {{ form.username }}
+              <!-- Assuming 'username' is the name of the field in the form -->
+              <label for="{{ form.username.id_for_label }}">Email</label>
+            </div>
+            <div class="input-box">
+              {{ form.password }}
+              <!-- Assuming 'password' is the name of the field in the form -->
+              <label for="{{ form.password.id_for_label }}">Password</label>
+            </div>
+            <input type="submit" class="btn" value="Login" />
+          </form>
+          <div class="group-section">
+            <a href="#">Forgot Password?</a>
+            <a href="{% url 'signup' %}">Create Account</a>
+          </div>
+          <!-- "Back to Home" button -->
+          <a href="{% url 'home' %}" class="btn-back-home">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 {% endblock %}

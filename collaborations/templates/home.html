@@ -1,27 +1,65 @@
-{% extends "base.html" %}{% block content %}
-<h2>Welcome to Our Open Science Community</h2>
-<p>
-  We are committed to open science and collaboration in research. Our platform
-  connects project creators with skilled contributors to advance scientific
-  knowledge.
-</p>
+{% extends "base.html" %} {% block content %}
+<header>
+  <div class="header-container">
+    <div class="header-container-inner">
+      <h1>Welcome to Our Open Science Community</h1>
+      <p>
+        We are committed to open science and collaboration in research. Our
+        platform connects project creators with skilled contributors to advance
+        scientific knowledge.
+      </p>
+      <a href="{% url 'user_profile' %}" class="btn">Start your journey! 🚀</a>
+    </div>
+  </div>
+</header>
 
-<h3>Key Features</h3>
-<ul>
-  <li>Find and join open science projects</li>
-  <li>Create and manage your research projects</li>
-  <li>Collaborate with experts from various fields</li>
-</ul>
+<section class="section-features">
+  <div class="container">
+    <h3>Key Features</h3>
+    <ul>
+      <li>Find and join open science projects</li>
+      <li>Create and manage your research projects</li>
+      <li>Collaborate with experts from various fields</li>
+    </ul>
+    <h3>Get Started</h3>
+    <p>
+      If you're a project creator looking for collaborators,
+      <a href="{% url 'create_project' %}">create a project</a> now. If you want
+      to contribute to open science projects,
+      <a href="{% url 'project_list' %}">browse projects</a> and find the ones
+      that interest you.
+    </p>
+  </div>
+</section>
+<section class="section-apod">
+  <div class="container">
+    <h2>NASA's Astronomy Picture of the Day</h2>
+    <div class="apod-content">
+      <img
+        src="{{ nasa_apod.url }}"
+        alt="{{ nasa_apod.title }}"
+        class="apod-image"
+      />
+      <div class="apod-description">
+        <h3>{{ nasa_apod.title }}</h3>
+        <p>{{ nasa_apod.explanation }}</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h3>Get Started</h3>
-<p>
-  If you're a project creator looking for collaborators,
-  <a href="{% url 'create_project' %}">create a project</a> now.
-</p>
-<p>
-  If you want to contribute to open science projects,
-  <a href="{% url 'project_list' %}">browse projects</a> and find the ones that
-  interest you.
-</p>
+<section class="normal-section">
+  <div class="container">
+    <h2>NASA</h2>
+    <p>
+      The National Aeronautics and Space Administration (NASA) is the United
+      States government agency responsible for U.S. space exploration, space
+      technology, Earth and space science, and aeronautics research. NASA
+      inspires the world by exploring new frontiers, discovering new knowledge,
+      and developing new technology.
+    </p>
+  </div>
+</section>
 
-{% endblock %}
+{% endblock content %}
+

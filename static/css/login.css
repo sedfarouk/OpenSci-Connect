@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins";
+  color: #fff;
+}
+
+body {
+  /*  Posittioning the login form in the center of the  page  */
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh + 20px);
+  z-index: -1;
+}
+.bg-video__content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.login-section {
+  /*   Styling the actual login form */
+  height: 400px;
+  width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(7px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-box {
+  /*    Centering elements thatt are inside the login form*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-section h2 {
+  /*    Styling the letters of  the "Login"*/
+  text-align: center;
+  font-size: 38px;
+  color: navy;
+}
+
+.form-box .input-box {
+  /*    Styling the boxes that recieve the inputt from user*/
+  position: relative;
+  margin: 20px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+.input-box input {
+  width: 90%;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 35px 0 5px;
+  background: transparent;
+  font-size: 16px;
+}
+
+.input-box label {
+  /*  styling the letter inside the input box */
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+
+  /*    In order  for  the labels to move smoothly  we add this transition*/
+  transition: 0.5s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  /*    Make the label appear to float in top of the input. When we pu  required in the input of the label then when we click that input box the  labels will move to the top -5px*/
+
+  top: -5px;
+}
+
+.btn {
+  /*    Syling the  submit  button */
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  background: navy;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+.group-section {
+  /*    Styling the  position of the of "forget password" and create "account" */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.group-section a {
+  /*   styling the  links for "forget password" and "Create  Account" */
+  font-size: 13px;
+  text-decoration: none;
+  font-weight: 500;
+  /*   creatting transition for the underline of the  links */
+  transition: 0.3s;
+}
+
+.group-section a:hover {
+  color: #0a90ff;
+  font-weight: 600;
+  text-decoration: underline;
+}
