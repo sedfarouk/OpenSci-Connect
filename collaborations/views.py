@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # jango built in model -> allows creation sign up and login view
 from django.contrib.auth import views as auth_views
 from django.contrib import messages
 from django.db.models import Q
@@ -13,12 +13,13 @@ from .forms import ProjectForm, MessageForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-#import requests
 
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    #fetch dat from Nasa
+    
+    return render(request, 'home.html') #format (requests, page_name.html, json_obj_passing)
 
 
 def signup(request):
@@ -31,6 +32,28 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def custom_login(request):
+    response = auth_views.LoginView.as_view()(request)
+    if request.user.is_authenticated:
+        return redirect('user_profile') 
+    return response
+
+
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            return redirect('project_list')
+    return render(request, 'registration/login.html')
+
+
 
 
 def get_user_project_interactions():
@@ -48,6 +71,7 @@ def get_user_project_interactions():
     return users, projects, user_project_matrix
 
 
+#This will match available projects with people with necessary skills
 @login_required
 def user_profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
