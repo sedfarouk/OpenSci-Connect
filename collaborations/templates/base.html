@@ -26,6 +26,8 @@
             <li><a href="{% url 'project_list' %}">Projects</a></li>
             <li><a href="{% url 'user_profile' %}">Profile</a></li>
             <li><a href="{% url 'message_list' %}">Messages</a></li>
+            <li><a href="{% url 'epic_api' %}">EPIC</a></li>
+            <li><a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a></li>
 
             {% if user.is_authenticated %}
             <li class="welcome">Welcome {{user.username}}</li>

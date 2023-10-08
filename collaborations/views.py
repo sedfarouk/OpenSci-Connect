@@ -30,26 +30,26 @@ def fetch_apod():
         return None
 
 #fetch MArs ROVER API 
-def fetch_mars_rover_photos():
+def fetch_mars_rover_photos(request):
     url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"
     response = requests.get(url)
     
     if response.status_code == 200:
         data = response.json()
         mars_photos = MarsRoverPhoto(data['photos'])
-        return mars_photos
+        return render(request, "mars_photos.html", {'mars_photos':mars_photos})
     else:
         return None
 
 
 # Fetch rotation of the earth EPIC API
-def fetch_epic():
+def fetch_epic(request):
     url = "https://api.nasa.gov/EPIC/api/natural/images?api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"  
     response = requests.get(url)
 
     if response.status_code == 200:
         data = response.json()
-        return data
+        return render(request, "epic.html", {'data':data})
     else:
         return None
 
@@ -57,17 +57,8 @@ def fetch_epic():
 
 # Create your views here.
 def home(request):
-    #fetch data from Nasa
     nasa_apod = fetch_apod()
-    
-    # fetch data from Mars Rover Photos
-    mars_photos = fetch_mars_rover_photos()
-    epic_data = fetch_epic()
-    print("🚀🚀🚀🚀")
-    print(epic_data)
-    print("🚀🚀🚀🚀")
-
-    return render(request, 'home.html', {'nasa_apod': nasa_apod, 'mars_photos': mars_photos, 'epic_data': epic_data}) #format (requests, page_name.html, json_obj_passing)
+    return render(request, 'home.html', {'nasa_apod': nasa_apod}) #format (requests, page_name.html, json_obj_passing)
 
 
 def signup(request):

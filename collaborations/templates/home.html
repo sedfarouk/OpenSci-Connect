@@ -61,29 +61,5 @@
   </div>
 </section>
 
-{% if epic_data %}
-<section class="epic-images-section">
-  <h2>EPIC Images</h2>
-  {% for entry in epic_data %} {% with date=entry.date|date:"Y/m/d" %} <img
-  src="https://api.nasa.gov/EPIC/archive/natural/{{ date|slice:":4" }}/{{
-  date|slice:"5:7" }}/{{ date|slice:"8:10" }}/png/{{ entry.image
-  }}.png?api_key=YOUR_API_KEY_HERE" alt="{{ entry.caption }}" />
-  <p>{{ entry.caption }}</p>
-  {% endwith %} {% endfor %}
-</section>
-{% endif %} {% if mars_photos %}
-<section class="mars-rover-photos-section">
-  <h2>Navigate Through the endless Mars Rover Photos!</h2>
-  <div class="mars-rover-grid">
-    {% for photo in mars_photos.photos %}
-    <div class="mars-rover-grid-item">
-      <img
-        src="{{ photo.img_src }}"
-        alt="Mars Rover Photo taken by {{ photo.camera.name }}"
-      />
-      <p>Taken by {{ photo.camera.name }} on sol {{ photo.sol }}</p>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-{% endif %} {% endblock %}
+
+
