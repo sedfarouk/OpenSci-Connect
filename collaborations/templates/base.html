@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenSci-Connect</title>
     {% load static %}
-    <link rel="icon" href="https://i.imgur.com/91mvIQV.jpeg" />
+    <link
+      rel="icon"
+      href="/static/img/bryanmax9_Nasa_project_logo_stamp_9e39aa90-e8f7-4ad0-b11a-196651b10d35.png"
+    />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     <link href="{% static 'css/base.css' %}" rel="stylesheet" />
     <link href="{% static 'css/projectList.css' %}" rel="stylesheet" />
@@ -14,25 +17,30 @@
     <link href="{% static 'css/messageList.css' %}" rel="stylesheet" />
     <link href="{% static 'css/messageForm.css' %}" rel="stylesheet" />
     <link href="{% static 'css/messageDetails.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/createProjects.css' %}" rel="stylesheet" />
   </head>
 
   <body>
     <nav class="navbar">
-      <div class="container">
-        <a href="/" class="navbar-brand">OpenSci Connect</a>
-        <div class="nav-items">
+      <a href="/" class="navbar-brand">OpenSci Connect</a>
+      <div class="menu-container">
+        {% if user.is_authenticated %}
+        <li style="list-style: none" class="welcome">
+          Welcome {{user.username}}
+        </li>
+        {% endif %}
+        <button class="menu-button" onclick="toggleMenu()">☰</button>
+        <div class="menu-content" id="menuContent">
+          <button class="close-button" onclick="toggleMenu()">×</button>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="{% url 'project_list' %}">Projects</a></li>
             <li><a href="{% url 'user_profile' %}">Profile</a></li>
             <li><a href="{% url 'message_list' %}">Messages</a></li>
             <li><a href="{% url 'epic_api' %}">EPIC</a></li>
-            <li><a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a></li>
-
-            {% if user.is_authenticated %}
-            <li class="welcome">Welcome {{user.username}}</li>
-            <li><a href="{% url 'logout' %}">Log out</a></li>
-            {% endif %}
+            <li>
+              <a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -43,5 +51,25 @@
     <footer>
       <p>&copy; {% now "Y" %} NASA Open Science</p>
     </footer>
+    <script>
+      function toggleMenu() {
+        const menuContent = document.getElementById("menuContent");
+        const menuButton = document.querySelector(".menu-button");
+        const closeButton = document.querySelector(".close-button");
+
+        if (
+          menuContent.style.display === "none" ||
+          menuContent.style.display === ""
+        ) {
+          menuContent.style.display = "flex";
+          menuButton.style.display = "none"; // Hide the menu button
+          closeButton.style.display = "block"; // Show the close button
+        } else {
+          menuContent.style.display = "none";
+          menuButton.style.display = "block"; // Show the menu button
+          closeButton.style.display = "none"; // Hide the close button
+        }
+      }
+    </script>
   </body>
 </html>

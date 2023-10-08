@@ -1,10 +1,10 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
+<section class="nasa-container">
   <h2>Create a Project</h2>
-  <form method="post">
+  <form method="post" class="nasa-form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create Project</button>
+    <div class="form-content">{{ form.as_p }}</div>
+    <button type="submit" class="nasa-btn">Create Project</button>
   </form>
+</section>
 {% endblock %}

@@ -102,10 +102,11 @@ def get_user_project_interactions():
             if interaction:
                 user_project_matrix[i][j] = 1  
     
+    # Remove rows that are all zero
+    user_project_matrix = user_project_matrix[~np.all(user_project_matrix == 0, axis=1)]
+    
     return users, projects, user_project_matrix
 
-
-#This will match available projects with people with necessary skills
 @login_required
 def user_profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
@@ -113,25 +114,34 @@ def user_profile(request):
     
     users = list(users)
 
-    if len(users) < 2 or len(projects) < 2:
+    if len(users) < 2 or len(projects) < 2 or user_project_matrix.shape[0] < 1:
         recommended_projects = [] 
     else:
-        svd = TruncatedSVD(n_components=2)
-        user_project_matrix_svd = svd.fit_transform(user_project_matrix)
+        try:
+            svd = TruncatedSVD(n_components=2)
+            user_project_matrix_svd = svd.fit_transform(user_project_matrix)
 
-        similarity_matrix = cosine_similarity(user_project_matrix_svd)
+            similarity_matrix = cosine_similarity(user_project_matrix_svd)
 
-        user_index = users.index(user_profile)
+            # Protecting against potential IndexError for users
+            try:
+                user_index = users.index(user_profile)
+            except ValueError:
+                return render(request, 'user_profile.html', {'user_profile': user_profile, 'recommended_projects': []})
 
-        user_similarities = similarity_matrix[int(user_index)]
-        sorted_indices = [int(i) for i in np.argsort(user_similarities)[::-1]]
+            user_similarities = similarity_matrix[int(user_index)]
+            sorted_indices = [int(i) for i in np.argsort(user_similarities)[::-1]]
 
-        recommended_projects = []
-        for i in sorted_indices:
-            if user_project_matrix[i].sum() < 0.1:  
-                recommended_projects.append(projects[i])
-            if len(recommended_projects) >= 5:
-                break
+            recommended_projects = []
+            for i in sorted_indices:
+                # Add a condition to ensure the index is within the range of 'projects'
+                if i < len(projects):
+                    if user_project_matrix[i].sum() < 0.1:
+                        recommended_projects.append(projects[i])
+                    if len(recommended_projects) >= 5:
+                        break
+        except ValueError:
+            recommended_projects = []
 
     return render(request, 'user_profile.html', {'user_profile': user_profile, 'recommended_projects': recommended_projects})
 
