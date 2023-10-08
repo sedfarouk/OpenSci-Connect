@@ -1,0 +1,42 @@
+.navbar {
+  background-color: #222;
+  padding: 1rem 0;
+  color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+}
+
+.nav-items ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-items ul li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s;
+}
+
+.nav-items ul li a:hover {
+  color: #e67e22;
+}
+
+.welcome {
+  margin-right: 20px;
+}
