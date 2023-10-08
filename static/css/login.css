@@ -3,13 +3,18 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "poppins";
-  color: #fff;
+  font-family: "roboto";
+  color:white;
+}
+
+p{
+  margin-top: 10px;
 }
 
 body {
-  /*  Posittioning the login form in the center of the  page  */
+  /*  Positioning the login form in the center of the  page  */
   background: transparent;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +49,7 @@ body {
   border-radius: 16px;
   backdrop-filter: blur(7px);
   border: 2px solid rgba(255, 255, 255, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .form-box {
@@ -58,7 +64,7 @@ body {
   /*    Styling the letters of  the "Login"*/
   text-align: center;
   font-size: 38px;
-  color: navy;
+  color: rgb(38, 90, 150);
 }
 
 .form-box .input-box {
@@ -101,9 +107,10 @@ input:valid ~ label {
   cursor: pointer;
   width: 100%;
   height: 40px;
-  background: navy;
+  background: rgb(38, 90, 150);
   outline: none;
   border: none;
+  border-radius: 4px;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 2px;
@@ -111,15 +118,13 @@ input:valid ~ label {
 
 .group-section {
   /*    Styling the  position of the of "forget password" and create "account" */
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: center;
 }
 
 .group-section a {
   /*   styling the  links for "forget password" and "Create  Account" */
-  font-size: 13px;
-  text-decoration: none;
   font-weight: 500;
   /*   creatting transition for the underline of the  links */
   transition: 0.3s;

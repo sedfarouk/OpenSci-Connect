@@ -24,15 +24,24 @@
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="{% url 'project_list' %}">Projects</a></li>
-            <li><a href="{% url 'user_profile' %}">Profile</a></li>
-            <li><a href="{% url 'message_list' %}">Messages</a></li>
             <li><a href="{% url 'epic_api' %}">EPIC</a></li>
             <li><a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a></li>
-
+            
             {% if user.is_authenticated %}
-            <li class="welcome">Welcome {{user.username}}</li>
-            <li><a href="{% url 'logout' %}">Log out</a></li>
+            <li class="dropdown">
+              <a href="javascript:void(0)" class="dropbtn">{{user.username}}</a>
+              <div class="dropdown-content">
+                <a href="{% url 'user_profile' %}">Profile</a>
+                <a href="{% url 'message_list' %}">Messages</a>
+                <a href="{% url 'logout' %}">Log out</a>
+              </div>
+            </li>
+
+            {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'signup' %}">Signup</a></li>
             {% endif %}
+
           </ul>
         </div>
       </div>
