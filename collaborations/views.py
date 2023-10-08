@@ -72,13 +72,6 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-def custom_login(request):
-    response = auth_views.LoginView.as_view()(request)
-    if request.user.is_authenticated:
-        return redirect('user_profile') 
-    return response
-
-
 def user_login(request):
     if request.method == 'POST':
         username = request.POST['username']

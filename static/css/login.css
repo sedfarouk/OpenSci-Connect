@@ -118,7 +118,7 @@ input:valid ~ label {
 
 .group-section {
   /*    Styling the  position of the of "forget password" and create "account" */
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 5px;
   text-align: center;
 }
