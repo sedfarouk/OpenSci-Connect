@@ -45,6 +45,7 @@ nav {
 
 footer{
   text-align: center;
+  margin-top: 30px;
 }
 
 .header-container {
@@ -106,6 +107,7 @@ section {
   background-color: #e8f5e9; /* Mild green shade for modern look */
   color: #333;
   padding: 40px 0;
+  justify-items: center;
 }
 
 .section-features h3 {
