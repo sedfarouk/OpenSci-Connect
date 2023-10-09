@@ -108,7 +108,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: auto;
   padding: 0 20px;
   display: flex;
@@ -120,7 +120,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   text-decoration: none;
-  color: white;
+  color:#4caf50;
 }
 
 .nav-items ul {
@@ -149,6 +149,10 @@
 .dropdown {
   position: relative;
   display: inline-block;
+}
+
+#dropbtn{
+  color: #e67e22;
 }
 
 .dropdown-content {
