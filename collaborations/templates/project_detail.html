@@ -13,7 +13,7 @@
 
     <div class="project-info">
       <div class="info-label">Creator:</div>
-      <div class="info-content">{{ project.creator }}</div>
+      <div class="info-content"><a href={% url 'create_message' user.id %} style="color:{{red}}"> {{ project.creator }} </a></div>
     </div>
 
     <div class="project-info">

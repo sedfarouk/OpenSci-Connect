@@ -6,17 +6,20 @@
     <!-- Message List Section -->
     <section class="message-section">
         <div class="message-header">
-            <h2>Message List</h2>
+            <h2 id="message-head">Message List</h2>
             <a href={% url "create_message" request.user.id %} class="compose-button">Compose a Message</a>
         </div>
 
+        {% if messages %}
         <div class="message-container">
             {% for message in messages %}
             <div class="message-card" onclick="loadMessageDetail({{ message.id }})">
               <h3>{{ message.subject }}</h3>
-          </div>
-          
+            </div>
             {% endfor %}
+        {% else %}
+            <h3>You have no messages yet</h3>
+        {% endif %}
         </div>
     </section>
 

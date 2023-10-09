@@ -1,9 +1,5 @@
-body {
-  font-family: "Arial", sans-serif;
-}
-
 .user-profile-section {
-  height: 90vh;
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,12 +10,13 @@ body {
 }
 
 .user-header {
-  margin-bottom: 3rem;
+  margin-top: 140px;
 }
 
 .user-profile-image {
   width: 250px;
   height: 250px;
+  margin-bottom: 20px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

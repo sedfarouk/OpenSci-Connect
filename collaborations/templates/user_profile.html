@@ -8,15 +8,12 @@
     />
   </div>
 
+  <h4><a href={% url 'edit_profile' %}> Edit profile </a></h4>
   <div class="user-info">
     <h2>🐟{{ user_profile.user.username }}</h2>
     <p><span class="info-title">Skills:</span> {{ user_profile.skills }}</p>
     <p>
       <span class="info-title">Interests:</span> {{ user_profile.interests }}
-    </p>
-    <p>
-      <span class="info-title">Availability:</span> {{ user_profile.availability
-      }}
     </p>
   </div>
 
