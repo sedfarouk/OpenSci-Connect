@@ -19,6 +19,44 @@ from django.shortcuts import get_object_or_404, render
 from .models import Message
 
 
+#fetch meteorites of the nasa API
+def fetch_neows_feed(request, start_date, end_date=None):
+    API_ENDPOINT = "https://api.nasa.gov/neo/rest/v1/feed"
+    API_KEY = "udQGHa9nzmkN8dFksMchqYorWULyTAXpFkmv04iY"
+
+    # Handle optional end_date
+    if not end_date:
+        params = {'start_date': start_date, 'api_key': API_KEY}
+    else:
+        params = {'start_date': start_date, 'end_date': end_date, 'api_key': API_KEY}
+
+    response = requests.get(API_ENDPOINT, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        asteroids = data['near_earth_objects'].get(start_date, [])  # Adjusted this line
+        return render(request, "neows_feed.html", {'asteroids': asteroids})
+    else:
+        return HttpResponseServerError("Error fetching NeoWs data")
+
+
+# Fetching Details of a Specific Asteroid:
+def fetch_neows_lookup(request, asteroid_id):
+    API_ENDPOINT = f"https://api.nasa.gov/neo/rest/v1/neo/{asteroid_id}"
+    API_KEY = "udQGHa9nzmkN8dFksMchqYorWULyTAXpFkmv04iY"  
+
+    params = {'api_key': API_KEY}
+
+    response = requests.get(API_ENDPOINT, params=params)
+
+    if response.status_code == 200:
+        asteroid_details = response.json()
+        return render(request, "neows_lookup.html", {'asteroid': asteroid_details})
+    else:
+        return HttpResponseServerError("Error fetching NeoWs data")
+
+
+
 # for functionality of the message list and make the message details appear to the right of the message list
 def ajax_message_detail(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
@@ -49,17 +87,6 @@ def fetch_mars_rover_photos(request):
     else:
         return None
 
-
-# Fetch rotation of the earth EPIC API
-def fetch_epic(request):
-    url = "https://api.nasa.gov/EPIC/api/natural/images?api_key=Jbm6MlEtCMeow8EedEFMEcfoXEfd9YmyvhbYdZ2b"  
-    response = requests.get(url)
-
-    if response.status_code == 200:
-        data = response.json()
-        return render(request, "epic.html", {'data':data})
-    else:
-        return None
 
 
 # Create your views here.
