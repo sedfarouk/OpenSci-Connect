@@ -1,23 +1,31 @@
+/* Resetting browser-specific styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Arial", sans-serif;
   background-color: #000;
+  color: #fff;
 }
 
 .nasa-container {
   max-width: 800px;
   margin: 50px auto;
-  padding: 20px;
-  background-color: #000;
+  padding: 40px;
+  background-color: #111;
   border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 h2 {
   color: #ffd700; /* NASA Gold */
-  border-bottom: 2px solid #ffd700; /* NASA Gold */
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  font-size: 2.5rem;
+  border-bottom: 3px solid #ffd700; /* NASA Gold */
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  font-size: 2.8rem;
 }
 
 .nasa-form {
@@ -25,42 +33,60 @@ h2 {
   flex-direction: column;
 }
 
+/* Adjusting the form content container */
 .nasa-form .form-content {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  display: flex; /* Set to flex */
+  flex-direction: column; /* Stack children vertically */
+  padding: 0;
 }
 
 .nasa-form .form-content p {
-  margin-bottom: 15px;
-  color: #fff;
+  display: flex; /* Already defined, but just to make sure */
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .nasa-form .form-content p label {
-  display: block;
-  margin-bottom: 5px;
-  color: #ffd700; /* NASA Gold */
+  flex: 1; /* This means the label will take up 1 fraction of the available space, while the input field will take up 2 fractions */
+  white-space: nowrap;
+  padding: 0;
 }
 
 .nasa-form .form-content p input,
 .nasa-form .form-content p textarea,
 .nasa-form .form-content p select {
-  width: 100%;
-  padding: 8px 10px;
-  background-color: #222;
-  border: 1px solid #ffd700; /* NASA Gold */
-  border-radius: 4px;
-  color: #fff;
+  flex: 2;
+  margin-left: 10px; /* Space between label and input field */
+}
+
+.nasa-form .form-content p input:focus,
+.nasa-form .form-content p textarea:focus,
+.nasa-form .form-content p select:focus {
+  border-color: #e6c300; /* Darkened NASA Gold */
+  outline: none;
 }
 
 .nasa-btn {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background-color: #ffd700; /* NASA Gold */
   color: #000;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .nasa-btn:hover {
   background-color: #e6c300; /* Darkened NASA Gold */
+  transform: scale(1.05);
+}
+
+.nasa-form .form-content p {
+  display: flex; /* Setting to flex for better alignment */
+  align-items: center; /* Align items vertically in the center */
+  margin-bottom: 20px; /* Spacing between each form element */
 }

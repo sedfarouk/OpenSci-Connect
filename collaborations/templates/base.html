@@ -29,12 +29,6 @@
             <li>
               <a href="{% url 'mars_rover_api' %}">Mars Rover Pictures</a>
             </li>
-            <li>
-              <a
-                href="{% url 'neows_feed' start_date='2023-10-01' end_date='2023-10-07' %}"
-                >Asteroid Data</a
-              >
-            </li>
 
             {% if user.is_authenticated %}
             <li class="dropdown">
