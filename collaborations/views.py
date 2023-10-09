@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import UserProfile, Project, Message, UserProjectInteraction
-from .forms import ProjectForm, MessageForm
+from .forms import ProjectForm, MessageForm, UserProfileForm
 from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
@@ -176,6 +176,21 @@ def user_profile(request):
             recommended_projects = []
 
     return render(request, 'user_profile.html', {'user_profile': user_profile, 'recommended_projects': recommended_projects})
+
+
+def edit_profile(request):
+    user_profile = UserProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile') 
+
+    else:
+        form = UserProfileForm(instance=user_profile)
+
+    return render(request, 'edit_profile.html', {'form': form})
 
 
 @login_required

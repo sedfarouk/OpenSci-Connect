@@ -1,5 +1,4 @@
 .projects-section {
-  height: 90vh; /* Make the section cover most of the viewport height */
   padding: 2rem 5vw; /* Adjusted padding for better responsiveness */
   background-color: #000;
   color: #fff;
