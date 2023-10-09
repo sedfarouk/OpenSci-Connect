@@ -13,8 +13,8 @@
     <div class="header-container-right">
       <p>
         If you're a project creator looking for collaborators,
-        <a href="{% url 'create_project' %}">create a project</a> now. If you want
-        to contribute to open science projects,
+        <a href="{% url 'create_project' %}">create a project</a> now. If you
+        want to contribute to open science projects,
         <a href="{% url 'project_list' %}">browse projects</a> and find the ones
         that interest you.
       </p>
@@ -36,6 +36,7 @@
   <div class="container">
     <h2>NASA's Astronomy Picture of the Day</h2>
     <div class="apod-content">
+      {% if nasa_apod.url and nasa_apod.title and nasa_apod.explanation %}
       <img
         src="{{ nasa_apod.url }}"
         alt="{{ nasa_apod.title }}"
@@ -45,6 +46,9 @@
         <h3>{{ nasa_apod.title }}</h3>
         <p>{{ nasa_apod.explanation }}</p>
       </div>
+      {% else %}
+      <p>Failed to fetch the APOD data.</p>
+      {% endif %}
     </div>
   </div>
 </section>

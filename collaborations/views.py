@@ -14,10 +14,12 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import requests # <-- for fetching API's of NASA
-
+from django.http import HttpResponseServerError  # Required for returning a 500 response
 from django.shortcuts import get_object_or_404, render
 from .models import Message
 
+
+# for functionality of the message list and make the message details appear to the right of the message list
 def ajax_message_detail(request, message_id):
     message = get_object_or_404(Message, pk=message_id)
     return render(request, 'ajax_message_detail.html', {'message': message})
@@ -62,8 +64,11 @@ def fetch_epic(request):
 
 # Create your views here.
 def home(request):
-    data = fetch_apod()
-    return render(request, 'home.html', {'data':data})
+    nasa_apod = fetch_apod()
+    if nasa_apod is None:
+        nasa_apod = NasaAPOD("No Data", "path/to/default/image.png", "Couldn't fetch APOD data")
+    return render(request, 'home.html', {'nasa_apod': nasa_apod})
+
 
 
 def signup(request):
