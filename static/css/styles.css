@@ -8,9 +8,17 @@ html {
   color: #444;
 }
 
+a{
+  color: #4caf50;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
 .container {
   margin: 0 auto;
-  width: 1200px;
+  width: 100%;
 }
 header {
   /*         background-color: orangered; */
@@ -34,7 +42,13 @@ nav {
   /* background-image: linear-gradient(to right, red, blue); */
   /*         background-color: green; */
 }
+
+footer{
+  text-align: center;
+}
+
 .header-container {
+  display: flex;
   width: 1200px;
   position: absolute;
   /* In relation to Parent size */
@@ -48,10 +62,11 @@ nav {
   /*      text-align: center; */
 }
 
-.header-container-inner {
-  width: 50%;
-  /*         background-color: blue; */
+.header-container-left{
+  width:50%;
+  padding-right: 100px;
 }
+
 h1 {
   font-size: 52px;
   margin-bottom: 32px;
@@ -62,7 +77,6 @@ p {
   font-size: 20px;
   line-height: 1.6;
   margin-bottom: 48px;
-  text-align: center;
 }
 
 .btn:link,
