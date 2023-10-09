@@ -1,6 +1,6 @@
 <img src="https://i.imgur.com/cEGtEzn.png" alt="MLH-banner" width="100%" height="200px">
 
-# CollabSpace: Nasa International Space Apps Challenge
+# OpenSci Connect: Nasa International Space Apps Challenge
 
 ## 🚀 About the Team
 
@@ -100,7 +100,3 @@ link = https://youtu.be/95eyJWVnZ-8
 ## 📜 Conclusion
 
 CollabSpace is more than just a platform—it's the future of open science collaboration. By creating an ecosystem where innovators and contributors can effortlessly come together, we believe that the boundaries of innovation will be pushed even further. Join us in this revolutionary journey and be part of the open science transformation.
-
-# OpenSci-Connect
-
-A web app built during the NASA Space Apps Challenge to help connect users' projects with collaborators with the necessary skills
