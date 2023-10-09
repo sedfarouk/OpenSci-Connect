@@ -2,20 +2,40 @@
 {% load static %}
 
 {% block content %}
-<section class="message-section">
-  <div class="message-header">
-    <h2>Message List</h2>
-    <a href={% url "create_message" request.user.id %} class="compose-button">Compose a Message</a>
-  </div>
-  
-  <div class="message-container">
-    {% for message in messages %}
-      <div class="message-card">
-        <a href="{% url 'message_detail' message.id %}" class="message-link">
-          <h3>{{ message.subject }}</h3>
-        </a>
-      </div>
-    {% endfor %}
-  </div>
-</section>
+<div class="main-container">
+    <!-- Message List Section -->
+    <section class="message-section">
+        <div class="message-header">
+            <h2>Message List</h2>
+            <a href={% url "create_message" request.user.id %} class="compose-button">Compose a Message</a>
+        </div>
+
+        <div class="message-container">
+            {% for message in messages %}
+            <div class="message-card" onclick="loadMessageDetail({{ message.id }})">
+              <h3>{{ message.subject }}</h3>
+          </div>
+          
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Message Detail Section (initially empty) -->
+    <section class="nasa-message-detail-section" id="messageDetail">
+        <!-- Message Detail content will be loaded here -->
+    </section>
+</div>
+
+<script>
+    function loadMessageDetail(messageId) {
+    fetch(`/get_message_detail/${messageId}/`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('messageDetail').innerHTML = data;
+        });
+}
+
+
+</script>
 {% endblock %}
+
