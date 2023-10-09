@@ -6,15 +6,16 @@ html {
 }
 
 .message-section {
+  width: 50%; /* Occupy half the container width */
   padding: 2rem 5vw;
   background-color: #000;
   color: #fff;
-  min-height: 90vh; /* Ensures that the section occupies most of the viewport */
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Change from center to start */
+  align-items: flex-start; /* Change from center to start */
 }
-
 .message-header {
   display: flex;
   justify-content: space-between;
@@ -38,12 +39,10 @@ html {
 
 .message-container {
   display: flex;
-  flex-direction: column; /* Ensures the messages are listed in a column */
+  flex-direction: column;
   gap: 2rem;
-  align-items: center; /* Centers the messages */
-  max-width: 800px; /* Sets a maximum width for readability */
-  margin: 0 auto; /* Centers the container if it's narrower than the viewport */
-  flex-grow: 1; /* Allows the container to grow and occupy the available space */
+  width: 40%; /* Adjust as per your need */
+  margin-left: 10%; /* This gives a left spacing */
 }
 
 .message-card {
@@ -69,4 +68,7 @@ html {
   margin: 0;
   font-size: 1.2rem;
   color: #ffd700; /* Golden color for emphasis */
+}
+.main-container {
+  display: flex;
 }

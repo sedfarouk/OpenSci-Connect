@@ -11,9 +11,13 @@ urlpatterns = [
     path('create_project/', create_project, name='create_project'),
     path('create_message/<int:recipient_id>/', create_message, name='create_message'),
     path('message_list/', message_list, name='message_list'),
+    path('neows_feed/<str:start_date>/<str:end_date>/', fetch_neows_feed, name='neows_feed'),
+    path('neows_lookup/<int:asteroid_id>/', fetch_neows_lookup, name='neows_lookup'),
     path('message_detail/<int:pk>/', MessageDetailView.as_view(), name='message_detail'),
     path('project_list/', ProjectListView.as_view(), name='project_list'),
     path('project_detail/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
-    path('epic_api/', fetch_epic, name="epic_api"),
+
+    path('get_message_detail/<int:message_id>/', ajax_message_detail, name='ajax_message_detail'),
+
     path('mars_rover_api', fetch_mars_rover_photos, name="mars_rover_api")
 ]

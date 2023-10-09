@@ -4,6 +4,7 @@ html {
 }
 
 .nasa-message-detail-section {
+  width: 50%; /* Occupy half the container width */
   background-color: #000;
   color: #fff;
   height: 90vh;
