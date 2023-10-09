@@ -15,9 +15,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import requests # <-- for fetching API's of NASA
 
+from django.shortcuts import get_object_or_404, render
+from .models import Message
+
+def ajax_message_detail(request, message_id):
+    message = get_object_or_404(Message, pk=message_id)
+    return render(request, 'ajax_message_detail.html', {'message': message})
+
 
 #fetch APOD API (Nasa daily pictures)
-
 def fetch_apod():
     url = "https://api.nasa.gov/planetary/apod?api_key=udQGHa9nzmkN8dFksMchqYorWULyTAXpFkmv04iY"
     response = requests.get(url)
