@@ -10,19 +10,16 @@ html {
   height: 90vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100% !important;
 }
 
 .nasa-message-container {
-  max-width: 800px;
+  max-width: 8000px;
   width: 80%;
   border-radius: 10px;
   background-color: #1a1a1a; /* Darker shade for modern look */
   padding: 20px 40px;
   box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.4); /* Slight golden glow for NASA touch */
-  text-align: center;
 }
 
 .nasa-nav-buttons {
@@ -49,7 +46,6 @@ html {
 .nasa-message-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 20px 0;
 }
 
@@ -61,7 +57,6 @@ html {
 
 .nasa-info-content {
   color: #fff;
-  text-align: center;
   max-width: 80%;
   word-wrap: break-word;
 }

@@ -7,7 +7,8 @@ html {
 
 .message-section {
   width: 50%; /* Occupy half the container width */
-  padding: 2rem 5vw;
+  margin-top: 25px;
+  padding: 1rem 3vw;
   background-color: #000;
   color: #fff;
   min-height: 90vh;
@@ -19,14 +20,20 @@ html {
 .message-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+#message-head{
+  font-size: 22px;
+  margin-right: 14px;
 }
 
 .compose-button {
   background-color: #ffd700; /* Golden color for emphasis */
   color: #000;
-  padding: 10px 20px;
+  padding: 4px 8px;
+  margin-left: 10px;
   border: none;
   border-radius: 5px;
   text-decoration: none;
@@ -41,21 +48,24 @@ html {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 40%; /* Adjust as per your need */
-  margin-left: 10%; /* This gives a left spacing */
+  width: 30%; /* Adjust as per your need */
+  margin-left: 5%; /* This gives a left spacing */
 }
 
 .message-card {
   width: 100%;
-  padding: 1rem;
-  background-color: #333;
+  padding: 0.8rem;
+  background-color: white;
+  color: black;
   border-radius: 10px;
   transition: background-color 0.3s, transform 0.3s;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
 }
 
 .message-card:hover {
-  background-color: #444;
+  background-color: black;
+  color: white;
+  cursor: pointer;
   transform: scale(1.05);
 }
 
