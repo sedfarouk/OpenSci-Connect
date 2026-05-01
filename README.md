@@ -1,5 +1,3 @@
-<img src="https://i.imgur.com/cEGtEzn.png" alt="MLH-banner" width="100%" height="200px">
-
 # OpenSci Connect: Nasa International Space Apps Challenge
 
 ## 🚀 About the Team
